@@ -18,10 +18,10 @@ $(function () {
         randerUI(data)
     })
 })
-let openHtml = '<img class="music-info-img" src="img/open.png">';
-let stopHtml = '<img class="music-info-img" src="img/stop.png">';
-let lastHtml = '<img class="music-info-img-last" src="img/last.png">';
-let nextHtml = '<img class="music-info-img-next" src="img/next.png">';
+let openHtml = '<img class="music-info-img" src="../img/open.png">';
+let stopHtml = '<img class="music-info-img" src="../img/stop.png">';
+let lastHtml = '<img class="music-info-img-last" src="../img/last.png">';
+let nextHtml = '<img class="music-info-img-next" src="../img/next.png">';
 
 function randerUI(data) {
     //遍历集合中数据
@@ -29,7 +29,7 @@ function randerUI(data) {
         let html = '';
         html += '<div class="item">'
         html += '<div class="item-icon">'
-        html += '<img class="music-img" src="img/icon.png">'
+        html += '<img class="music-img" src="../img/icon.png">'
         html += '</div>'
         html += '<div class="item-name">' + m.name + '</div>'
         html += '<div class="item-size">' + fmtSize(m.size) + '</div>'
