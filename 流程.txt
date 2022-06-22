@@ -4,6 +4,7 @@
 	1.Chinese
 	2.open in browser
 	3.test
+	4.test
 
 3.������Ŀ
 
