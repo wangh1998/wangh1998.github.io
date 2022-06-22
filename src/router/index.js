@@ -1,8 +1,8 @@
 /*
  * @Description: 
  * @Date: 2022-05-09 11:03:25
- * @LastEditTime: 2022-06-21 16:01:00
- * @FilePath: /vue2-project/src/router/index.js
+ * @LastEditTime: 2022-06-22 11:40:28
+ * @FilePath: /wangh1998.github.io/src/router/index.js
  */
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -40,7 +40,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  // mode: "history",
   base: process.env.BASE_URL,
   routes,
 });
