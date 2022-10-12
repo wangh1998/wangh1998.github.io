@@ -1,31 +1,25 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    {{ $store.state.User.userInfo.age }} -->
-
-    <!-- <my-component v-model="num"></my-component> -->
-
-    <!-- <my-component
-      :value="num"
-      @input="(value) => (this.num = value)"
-    ></my-component>
-
-    <Children :flag="flag" @handelReverse="handelReverse"></Children> -->
-
-    <!-- v-bind:value="num" -->
     <input type="text" v-model="value" style="width: 600px" />
     <button @click="encrypt">加密</button>
     <button @click="decrypt">解密</button>
-    <div>结果：{{ result }}</div>
+    <button @click="init">初始化</button>
+    <div v-show="!isEncrypt">
+      <div>解密结果：</div>
+      <button @click="onCopy">复制</button>
+      <json-viewer :value="result" :expanded="true"></json-viewer>
+    </div>
+    <div v-show="isEncrypt">
+      <div>
+        加密结果：<button @click="onCopy">复制</button> &nbsp;{{ result }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
-// import MyComponent from '@/components/MyComponent.vue';
 import SM4Util from 'gm-crypt';
+import JsonViewer from 'vue-json-viewer';
 const SM4_KEY = 'AKV4OR5HFU4XM6D7';
 const encryptSM4 = (text) => {
   const sm4Config = {
@@ -54,25 +48,38 @@ const decryptSM4 = (text) => {
 export default {
   name: 'Home',
   components: {
-    // HelloWorld,
-    // MyComponent,
+    JsonViewer,
   },
   data() {
     return {
-      // num: 2, // 父组件
       value: '',
       result: '',
+      isEncrypt: false, // 加密
     };
   },
   methods: {
-    // handelReverse(value) {
-    //   this.flag = value;
-    // },
+    init() {
+      this.value = '';
+      this.result = '';
+      this.isEncrypt = false;
+    },
     encrypt() {
+      this.isEncrypt = true;
       this.result = encryptSM4(this.value);
     },
     decrypt() {
-      this.result = decryptSM4(this.value);
+      this.isEncrypt = false;
+      this.result = JSON.parse(decryptSM4(this.value));
+    },
+    onCopy() {
+      this.$copyText(JSON.stringify(this.result)).then(
+        function () {
+          alert('复制成功!');
+        },
+        function () {
+          alert('复制失败!');
+        }
+      );
     },
   },
 };
