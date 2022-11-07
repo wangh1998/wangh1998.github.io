@@ -2,7 +2,8 @@
   <div class="home">
     <input type="text" v-model="value" style="width: 600px" />
     <button @click="encrypt">加密</button>
-    <button @click="decrypt">解密</button>
+    <button @click="decrypt">解密复杂类型</button>
+    <button @click="decryptSim">解密简单类型</button>
     <button @click="init">初始化</button>
     <div v-show="!isEncrypt">
       <div>解密结果：</div>
@@ -70,6 +71,10 @@ export default {
     decrypt() {
       this.isEncrypt = false;
       this.result = JSON.parse(decryptSM4(this.value));
+    },
+    decryptSim() {
+      this.isEncrypt = false;
+      this.result = decryptSM4(this.value);
     },
     onCopy() {
       this.$copyText(JSON.stringify(this.result)).then(
