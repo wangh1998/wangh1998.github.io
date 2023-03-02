@@ -15,6 +15,17 @@
         加密结果：<button @click="onCopy">复制</button> &nbsp;{{ result }}
       </div>
     </div>
+
+    <!-- 一些css效果 -->
+    <div class="flex">
+      <span class="demo-item">玻璃效果（我喜欢桔梗）</span>
+      <div class="glass">
+        <div class="glass-effect" v-draggable></div>
+        <div class="glass-text">
+          犬夜叉，日本漫画《犬夜叉》及其衍生作品中的男主角。西国犬妖斗牙王与人类公主十六夜之子，人类与妖怪所生的半妖，因自己半妖的身份从小受人排挤，为此想要得到四魂之玉的力量成为完全的妖怪。与同父异母所生的兄长杀生丸，并没有兄弟之情。在跟日暮戈薇、弥勒、珊瑚、七宝等同伴一起收集四魂之玉碎片的过程中不断成长，最终成为了一个勇敢坚强而又温柔善良的半妖，并跟朝夕相处相恋的现代少女日暮戈薇共同结束了四魂之玉的命运轮回，走到了一起，和大家一起共同迎接未来。
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -89,3 +100,65 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.flex {
+  display: flex;
+  flex-direction: column;
+  .demo-item {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #000;
+    position: relative;
+    cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      transform: scaleX(0);
+      bottom: -5px;
+      height: 2px;
+      background: #4e7bf4;
+      left: 0;
+      width: 100%;
+      transition: transform 0.3s ease-in-out;
+      transform-origin: bottom right;
+    }
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+  .glass {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    border: 2px dotted #000;
+    padding: 15px;
+    border-radius: 5px;
+    user-select: none;
+    & .glass-text {
+      font-size: 18px;
+      line-height: 30px;
+      font-family: Helvetica, Arial, sans-serif;
+      text-transform: capitalize;
+      // text-shadow: 0px 0px 0px #fff, 1px 1px 2px #000;
+      font-weight: normal;
+      letter-spacing: 2px;
+    }
+    & .glass-effect {
+      position: absolute;
+      width: 20%;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 28px;
+      -webkit-backdrop-filter: blur(6.2px);
+      backdrop-filter: blur(1px);
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 30px;
+      border: 2px solid #7807281a;
+    }
+  }
+}
+</style>

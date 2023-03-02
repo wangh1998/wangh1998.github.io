@@ -4,9 +4,15 @@ import router from "./router";
 import store from "./store";
 import VueClipboard from 'vue-clipboard2'
 
+import Directives from './directives/index'
+
 Vue.use(VueClipboard)
 
 Vue.config.productionTip = false;
+
+Vue.use(Directives)
+
+
 
 new Vue({
   router,
