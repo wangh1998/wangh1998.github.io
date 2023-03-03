@@ -136,6 +136,7 @@ export default {
     padding: 15px;
     border-radius: 5px;
     user-select: none;
+    background: linear-gradient(35deg, #ccffff, #ffcccc, rgb(204, 204, 255));
     & .glass-text {
       font-size: 18px;
       line-height: 30px;
@@ -155,7 +156,7 @@ export default {
       height: 28px;
       -webkit-backdrop-filter: blur(6.2px);
       backdrop-filter: blur(1px);
-      background: rgba(255, 255, 255, 0.4);
+      background: transparent;
       border-radius: 30px;
       border: 2px solid #7807281a;
     }
